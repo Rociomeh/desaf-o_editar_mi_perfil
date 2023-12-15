@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import Alert from './Alert';
 import Formulario from './Formulario'
 import SocialButton from './SocialButton'
-//import Alert from './Alert'
 
-function Registro() {
-  const [count, setCount] = useState(0)
+export default function Registro({errorV, success, setErrorV ,setSuccess}) {
 
   return (
     <div className="registro-container">
@@ -15,9 +14,15 @@ function Registro() {
           icono3="fa-brands fa-linkedin"
     />
     <p>O usa tu email para registrarte</p>
-      <Formulario /> 
+      <Formulario
+        setErrorV = {setErrorV}
+        setSuccess = {setSuccess}
+      /> 
+      <Alert
+        errorV = {errorV}
+        success = {success}
+      />
     </div>
   );
 };
 
-export default Registro;

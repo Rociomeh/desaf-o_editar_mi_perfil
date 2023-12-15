@@ -1,18 +1,9 @@
-const Alert = () => {
-    const validar = () => {
-        //verifica si las claves son iguales
-        if (contraseña === confirma) {
-            alert("Las contraseñas son iguales")
-        }
-        else {
-            alert("Reintenta") //Las claves no son iguales
-        }
-    };
+export default function Alert ({errorV, success}) {
 
     return (
         <>
+            {errorV.length>0 ? <p style={{color:"red"}}>{errorV}</p> : null}
+            {success.length>0 ? <p style={{color:"green"}}>{success}</p> : null}
         </>
     );
 };
-
-export default Alert;

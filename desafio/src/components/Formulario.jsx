@@ -1,24 +1,17 @@
 import { useState } from "react";
 
-function Formulario() {
+
+export default function Formulario({setErrorV, setSuccess}) {
+
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [contraseña, setContraseña] = useState("");
     const [confirma, setConfirma] = useState("");
 
-    const enviar = () => {
-        alert(nombre) 
-        alert("dentro de enviar")
-        alert(email)
-        alert(contraseña)
-    };
-
-    const [error, setError] = useState(false); 
     const [errorA, setErrorA] = useState(false);
     const [errorC, setErrorC] = useState(false);
 
     const verificarCorreo = () => {
-
         if(!email.includes('@')){
             setErrorA(true);
             console.log("no existe arroba")
@@ -44,14 +37,13 @@ function Formulario() {
 
         if (nombre === '' || email === '' || contraseña === '' || confirma === '')
         {
-            setError(true);
-            console.log("antes de verificar correo ")
-            console.log("despues de verificar correo ")
+
+            setErrorV("Faltan datos en el formulario");
+            setSuccess("");
             return; 
         }
-
-        setError(false);   
-    
+        setErrorV("");
+        setSuccess("Registro exitoso")
     };
     
     return (
@@ -85,11 +77,9 @@ function Formulario() {
                 {errorC ? <p style={{color:"red"}}>No coinciden!</p> : null}
                 <br></br>
                 <button className = "btn btn-success" type="submit" name = "Boton">Registrarse</button> 
-                {error ? <p style={{color:"red"}}>Completa todos los campos!</p> : null}
+                
             </div>
         </form>
         </>
     );
 };
-
-export default Formulario;
