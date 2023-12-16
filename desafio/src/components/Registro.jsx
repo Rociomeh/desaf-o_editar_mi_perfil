@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Alert from './Alert';
 import Formulario from './Formulario'
 import SocialButton from './SocialButton'
@@ -24,5 +23,5 @@ export default function Registro({errorV, success, setErrorV ,setSuccess}) {
       />
     </div>
   );
-};
+}
 
