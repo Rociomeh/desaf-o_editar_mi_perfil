@@ -8,11 +8,11 @@ export default function Registro({errorV, success, setErrorV ,setSuccess}) {
   return (
     <div className="registro-container">
     <h2>Crea una cuenta</h2>
-      <SocialButton 
-          icono1="fa-brands fa-facebook"
-          icono2="fa-brands fa-github"
-          icono3="fa-brands fa-linkedin"
-    />
+    <div className='botones'>
+        <SocialButton icono='fa-brands fa-facebook fa-3x'/>
+        <SocialButton icono='fa-brands fa-github fa-3x'/>
+        <SocialButton icono='fa-brands fa-linkedin fa-3x'/>
+    </div>
     <p>O usa tu email para registrarte</p>
       <Formulario
         setErrorV = {setErrorV}

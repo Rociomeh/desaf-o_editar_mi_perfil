@@ -1,9 +1,10 @@
-const SocialButton = ({icono1, icono2 , icono3}) => {
+import Button from 'react-bootstrap/Button';
+
+
+const SocialButton = (props) => {
     return (
         <>
-            <i  className={icono1}></i>
-            <i className={icono2}></i>
-            <i className={icono3}></i>
+        <Button variant="outline-dark"><i class={props.icono}></i></Button>
         </>
     );
 };
