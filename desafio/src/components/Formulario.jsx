@@ -3,37 +3,18 @@ import { useState } from "react";
 
 export default function Formulario({setErrorV, setSuccess}) {
 
+    const validName = /^[a-zA-Z]+$/;
+    const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+
+
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [contraseña, setContraseña] = useState("");
     const [confirma, setConfirma] = useState("");
 
-    const [errorA, setErrorA] = useState(false);
-    const [errorC, setErrorC] = useState(false);
-
-    const verificarCorreo = () => {
-        if(!email.includes('@')){
-            setErrorA(true);
-            console.log("no existe arroba")
-            return;
-        }
-        setErrorA(false);
-    }
-    
-    const validarContraseña = () => {
-        if(contraseña!==confirma){
-            setErrorC(true);
-            console.log("no coinciden las contrasenas ")
-            return;
-        }
-        setErrorC(false);
-    }
 
     const validarDatos = (e) => { //Confirma si los datos están en las casillas para mostrar o no el mensaje de completar
         e.preventDefault(); 
-
-        verificarCorreo();
-        validarContraseña();
 
         if (nombre === '' || email === '' || contraseña === '' || confirma === '')
         {
@@ -41,6 +22,18 @@ export default function Formulario({setErrorV, setSuccess}) {
             setErrorV("Faltan datos en el formulario");
             setSuccess("");
             return; 
+        }else if(!validName.test(nombre)){
+            setErrorV('Nombre invalido')
+            setSuccess('')
+            return;
+        }else if(!validEmail.test(email)){
+            setErrorV('Correo invalido')
+            setSuccess('')
+            return;
+        }else if(contraseña !== confirma){
+            setErrorV('No coincide contraseña')
+            setSuccess('')
+            return;
         }
         setErrorV("");
         setSuccess("Registro exitoso")
@@ -61,7 +54,6 @@ export default function Formulario({setErrorV, setSuccess}) {
                         name = "Email" 
                         onChange = {(e) => setEmail(e.target.value)} 
                         placeholder = "tuemail@ejemplo.com"/>
-                {errorA ? <p style={{color:"red"}}>Formato de correo incorrecto!</p> : null}
                 <br></br>
                 <input className = "form-control" 
                     type="password" 
@@ -74,7 +66,6 @@ export default function Formulario({setErrorV, setSuccess}) {
                         name = "Confirma" 
                         onChange = {(e) => setConfirma(e.target.value)} 
                         placeholder = "Confirma tu contraseña"/>
-                {errorC ? <p style={{color:"red"}}>No coinciden!</p> : null}
                 <br></br>
                 <button className = "btn btn-success" type="submit" name = "Boton">Registrarse</button> 
                 
@@ -82,4 +73,4 @@ export default function Formulario({setErrorV, setSuccess}) {
         </form>
         </>
     );
-};
+}

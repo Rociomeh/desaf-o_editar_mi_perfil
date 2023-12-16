@@ -12,6 +12,7 @@ body {
 }
 
 .registro-container {
+  width: 500px;
   background-color: white;
   padding: 20px; 
   margin: 20px; 
@@ -32,7 +33,23 @@ body {
     animation: logo-spin infinite 20s linear;
   }
 }
-
+/* diseño de botones rrss */
+.botones{
+  display: flex;
+  justify-content: space-around;
+}
+.botones button{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+/* separacion de la etiqueta p */
+.registro-container p{
+  padding-top: 10px;
+}
+.form-group button{
+  width: 100%;
+}
 .card {
   padding: 2em;
 }
